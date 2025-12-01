@@ -11,11 +11,15 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Toko Kami",
-  description: "Pusat jajanan, Pesan sekarang via WhatsApp!",
+  metadataBase: new URL('https://tokokami.vercel.app'),
+  title: {
+    default: "Toko Kami | Menyediakan Jajanan",
+    template: "%s | Toko Kami"
+  },
+  description: "Menyediakan jajanan enak dan murah. Pesan sekarang via WhatsApp!",
   openGraph: {
     title: "Toko Kami",
-    description: "Jajanan.",
+    description: "Jajanan enak dan murah.",
     url: "https://tokokami.vercel.app", 
     siteName: "TokoKami",
     locale: "id_ID",

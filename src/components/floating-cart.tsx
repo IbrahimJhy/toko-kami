@@ -4,14 +4,10 @@ import { useCart } from "@/hooks/use-cart";
 import { useState, useEffect } from "react";
 import Link from 'next/link';
 
-// Hapus import CartDrawer dari sini
-
 export default function FloatingCart() {
   const [isMounted, setIsMounted] = useState(false); 
   const items = useCart((state) => state.items);
   const totalPrice = useCart((state) => state.totalPrice);
-  
-  // Hapus state isOpen dan setIsOpen
 
   useEffect(() => {
     setIsMounted(true);
@@ -22,7 +18,6 @@ export default function FloatingCart() {
   }
   
   return (
-    // Gunakan Link untuk navigasi ke halaman /cart
     <Link 
       href="/cart"
       className="fixed bottom-6 left-6 right-6 z-50 mx-auto max-w-3xl animate-in slide-in-from-bottom-5 fade-in duration-500 cursor-pointer"
