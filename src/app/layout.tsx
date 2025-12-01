@@ -33,7 +33,6 @@ export default function RootLayout({
       <body className={`${poppins.variable} antialiased bg-[#FAFAFA]`}>
         {children}
         <FloatingCart />
-        {/* <Toaster position="bottom-center" /> // Dihapus */}
         <Analytics />
       </body>
     </html>

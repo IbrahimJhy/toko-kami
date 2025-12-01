@@ -5,24 +5,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/types";
 import Navbar from "@/components/navbar";
-import LoginModal from "@/components/login-modal";
-import { useAuth } from "@/hooks/use-auth";
 
 interface HomeClientProps {
   products: Product[];
 }
 
 export default function HomeClient({ products }: HomeClientProps) {
-  const auth = useAuth(); 
   const [isMounted, setIsMounted] = useState(false);
   
   // 1. Cek Hydration
   useEffect(() => {
     setIsMounted(true);
   }, []);
-
-  // 2. Tentukan kapan modal harus muncul: HANYA jika sudah di-mount DAN belum pernah ditampilkan
-  const showLoginModal = isMounted && !auth.hasShownModal;
   
   // Jika belum mount, return null untuk mencegah Hydration Error
   if (!isMounted) return null;
@@ -30,12 +24,7 @@ export default function HomeClient({ products }: HomeClientProps) {
   return (
     <main className="min-h-screen bg-[#FAFAFA]">
       
-      {/* 1. Modal Login (Menggunakan global store) */}
-      <LoginModal 
-        isOpen={showLoginModal} 
-        onLogin={auth.login} // Memanggil fungsi login dari global store
-        onSkip={auth.skip}   // Memanggil fungsi skip dari global store
-      />
+      {/* 1. Modal Login (Dihapus) */}
 
       {/* 2. Navbar (Tidak perlu props) */}
       <Navbar /> 
@@ -46,7 +35,7 @@ export default function HomeClient({ products }: HomeClientProps) {
           Jajanan<span className="text-orange-600">Kami</span>
         </h1>
         <p className="mx-auto max-w-2xl text-lg leading-relaxed text-gray-500">
-          Selamat datang {auth.username && auth.username !== "Tamu" ? auth.username : "di Toko Kami"}
+          Selamat datang di Toko Kami
         </p>
       </section>
 
